@@ -19,23 +19,23 @@ const getSingle = async (req, res) => {
     })
 }
 
-const createUser = async (req, res) => {
-    try {
-        const userData = req.body
-        console.log(userData)
-        //const result = await mongodb.getDatabase().db().collection('Contacts').insertOne(userData)
+// const createUser = async (req, res) => {
+//     try {
+//         const userData = req.body
+//         console.log(userData)
+//         //const result = await mongodb.getDatabase().db().collection('Contacts').insertOne(userData)
 
-        res.setHeader(`content-type`, `application/json`)
-        res.status(201).json('ok')
-    } catch (error) {
-        console.error(error)
-        res.status(500).json({ error: "Internal Server Error", details: error.message })
-    }
-}
+//         res.setHeader(`content-type`, `application/json`)
+//         res.status(201).json('ok')
+//     } catch (error) {
+//         console.error(error)
+//         res.status(500).json({ error: "Internal Server Error", details: error.message })
+//     }
+// }
 
 
 module.exports = {
     getAll,
     getSingle,
-    createUser
+    //createUser
 }
