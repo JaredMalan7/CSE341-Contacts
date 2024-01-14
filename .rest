@@ -1,0 +1,27 @@
+GET http://localhost:3000/users HTTP/1.1
+
+###
+
+GET http://localhost:3000/users/65a301655a0d75b6bc094421 HTTP/1.1
+
+###
+POST http://localhost:3000/users
+content-type: application/json
+
+{
+"firstName": "Jared",
+"lastName": "Malan",
+"email": "jaredmalan@gamil.com",
+"favoriteColor": "Black",
+"Birthday": "1991-07-26"
+}
+
+###
+PUT http://localhost:3000/users/65a301655a0d75b6bc094421 HTTP/1.1
+content-type: application/json
+
+{
+   "firstName": "Juan", 
+}
+
+DELETE  http://localhost:3000/users/65a301655a0d75b6bc094423 HTTP/1.1
