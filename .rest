@@ -2,7 +2,7 @@ GET http://localhost:3000/ HTTP/1.1
 
 ###
 
-GET http://localhost:3000/users/65a301655a0d75b6bc094421 HTTP/1.1
+GET http://localhost:3000/65a301655a0d75b6bc094421 HTTP/1.1
 
 ###
 POST http://localhost:3000/users HTTP/1.1
