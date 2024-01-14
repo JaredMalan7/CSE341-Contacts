@@ -9,7 +9,6 @@ const getAll = async (req, res) => {
         res.status(200).json(Contacts)
     })
 }
-
 const getSingle = async (req, res) => {
     const userId = new ObjectId(req.params.id)
     const result = await mongodb.getDatabase().db().collection('Contacts').find({ _id: userId })
@@ -18,24 +17,23 @@ const getSingle = async (req, res) => {
         res.status(200).json(Contacts[0])
     })
 }
+const createUser = async (req, res) => {
+    try {
+        const userData = req.body
+        //console.log(userData)
+        const result = await mongodb.getDatabase().db().collection('Contacts').insertOne(userData)
 
-// const createUser = async (req, res) => {
-//     try {
-//         const userData = req.body
-//         console.log(userData)
-//         //const result = await mongodb.getDatabase().db().collection('Contacts').insertOne(userData)
-
-//         res.setHeader(`content-type`, `application/json`)
-//         res.status(201).json('ok')
-//     } catch (error) {
-//         console.error(error)
-//         res.status(500).json({ error: "Internal Server Error", details: error.message })
-//     }
-// }
+        res.setHeader(`content-type`, `application/json`)
+        res.status(201).json(result.ops[0])
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({ error: "Internal Server Error", details: error.message })
+    }
+}
 
 
 module.exports = {
     getAll,
     getSingle,
-    //createUser
+    createUser
 }
