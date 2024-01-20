@@ -1,34 +1,39 @@
-GET http://localhost:3000/ HTTP/1.1
+//Localhost
+### Gets all contacts
+GET http://localhost:3000/users HTTP/1.1
 
-###
+### Gets a contact using the localhost and the userId
+GET http://localhost:3000/users/65a301655a0d75b6bc094421 HTTP/1.1
+
+### Gets all contacts using the Render link
 GET https://cse341-contacts-fz3z.onrender.com HTTP/1.1
-###
+
+### Gets one contact using the Render link + the userId
 GET https://cse341-contacts-fz3z.onrender.com/65a301655a0d75b6bc094421 HTTP/1.1
 
-###
-GET http://localhost:3000/65a301655a0d75b6bc094421 HTTP/1.1
-
-###
-GET https://cse341-contacts-fz3z.onrender.com HTTP/1.1
-###
+### Creates User locally
 POST http://localhost:3000/users HTTP/1.1
+content-type: application/json
 
+{
+"firstName": "Asher",
+"lastName": "Malan",
+"email": "ashermalan@example.com",
+"favoriteColor": "Black",
+"birthday": "2023-05-04"
+}
+
+### Updates user by Id Locally
+PUT http://localhost:3000/users/65ac4dd6affbbc288ee355bb HTTP/1.1
 content-type: application/json
 
 {
 "firstName": "Jared",
 "lastName": "Malan",
-"email": "jaredmalan@gamil.com",
+"email": "jaredm@example.com",
 "favoriteColor": "Black",
-"Birthday": "1991-07-26"
+"birthday": "1991-07-26"
 }
 
-###
-PUT http://localhost:3000/users/65a301655a0d75b6bc094421 HTTP/1.1
-content-type: application/json
-
-{
-   "firstName": "Juan", 
-}
-
-DELETE  http://localhost:3000/users/65a301655a0d75b6bc094423 HTTP/1.1
+### Deletes user by ID from the database locally
+DELETE  http://localhost:3000/users/65ac212485cfea605ef3fa20 HTTP/1.1

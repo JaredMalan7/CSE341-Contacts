@@ -42,24 +42,67 @@ const getSingle = async (req, res) => {
     }
 }
 
-
 const createUser = async (req, res) => {
+    console.log(req.body)
     try {
-        const userData = req.body
-        //console.log(userData)
-        const result = await mongodb.getDatabase().db().collection('Contacts').insertOne(userData)
+        const user = {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            favoriteColor: req.body.favoriteColor,
+            birthday: req.body.birthday
+        }
 
-        res.setHeader(`content-type`, `application/json`)
-        res.status(201).json(result.ops[0])
-    } catch (error) {
-        console.error(error)
-        res.status(500).json({ error: "Internal Server Error", details: error.message })
+        const response = await mongodb.getDatabase().db().collection('Contacts').insertOne(user)
+        if (response.acknowledged) {
+
+            // Testing what I am getting when creating a user, and immediately pulling and logging the data
+            // const insertedId = response.insertedId
+            // const insertedUser = await mongodb.getDatabase().db().collection('Contacts').findOne({ _id: insertedId })
+            // console.log('Inserted User Data:', insertedUser)
+
+            res.status(201).json(response)
+        } else {
+            res.status(500).json(response.error || 'Some error occurred while creating a user.')
+        }
+    } catch (err) {
+        console.error(err);
+        res.status(500).json(err)
     }
 }
 
+const updateUser = async (req, res) => {
+    const userId = new ObjectId(req.params.id)
+    const user = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        favoriteColor: req.body.favoriteColor,
+        birthday: req.body.birthday
+    }
+    const response = await mongodb.getDatabase().db().collection('Contacts').replaceOne({ _id: userId }, user)
+    if (response.modifiedCount > 0) {
+        res.status(204).send()
+    } else {
+        res.status(500).json(response.error || 'Some error ocrrred while updating the user.')
+    }
+}
+
+const deleteUser = async (req, res) => {
+    const userId = new ObjectId(req.params.id)
+    const response = await mongodb.getDatabase().db().collection('Contacts').deleteOne({ _id: userId }, true)
+    console.log(response)
+    if (response.deletedCount > 0) {
+        res.status(204).send()
+    } else {
+        res.status(500).json(response.error || 'Some error ocurred while deleting the user')
+    }
+}
 
 module.exports = {
     getAll,
     getSingle,
-    createUser
+    createUser,
+    updateUser,
+    deleteUser
 }
