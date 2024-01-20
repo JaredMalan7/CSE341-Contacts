@@ -1,7 +1,7 @@
 GET http://localhost:3000/ HTTP/1.1
 
 ###
-GET https://cse341-contacts-fz3z.onrender.com HTTP/1.1
+GET https://cse341-w1-api.onrender.com/professional HTTP/1.1
 
 ###
 GET http://localhost:3000/65a301655a0d75b6bc094421 HTTP/1.1
