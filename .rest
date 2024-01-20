@@ -6,7 +6,7 @@ GET http://localhost:3000/users HTTP/1.1
 GET http://localhost:3000/users/65a301655a0d75b6bc094421 HTTP/1.1
 
 ### Gets all contacts using the Render link
-GET https://cse341-contacts-fz3z.onrender.com HTTP/1.1
+GET https://cse341-contacts-fz3z.onrender.com/users/65ac4dd6affbbc288ee355bb HTTP/1.1
 
 ### Gets one contact using the Render link + the userId
 GET https://cse341-contacts-fz3z.onrender.com/65a301655a0d75b6bc094421 HTTP/1.1
