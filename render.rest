@@ -1,0 +1,33 @@
+### Gets all contacts using Render link
+GET https://cse341-contacts-fz3z.onrender.com/users/ HTTP/1.1
+
+### Gets one contact using the Render link + the userId
+GET https://cse341-contacts-fz3z.onrender.com/ HTTP/1.1
+
+
+### Creates contact using the Render link
+POST https://cse341-contacts-fz3z.onrender.com/users/ HTTP/1.1
+content-type: application/json
+
+{
+"firstName": "Asher",
+"lastName": "Malan",
+"email": "ashermalan@example.com",
+"favoriteColor": "Black",
+"birthday": "2023-05-04"
+}
+
+### Updates Contact from using the Render link
+PUT https://cse341-contacts-fz3z.onrender.com/users/ HTTP/1.1
+content-type: application/json
+
+{
+"firstName": "Jared",
+"lastName": "Malan",
+"email": "jaredm@example.com",
+"favoriteColor": "Black",
+"birthday": "1991-07-26"
+}
+
+### Deletes a contact using the Render link
+DELETE https://cse341-contacts-fz3z.onrender.com/users/ HTTP/1.1

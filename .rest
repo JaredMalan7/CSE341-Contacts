@@ -5,12 +5,6 @@ GET http://localhost:3000/users HTTP/1.1
 ### Gets a contact using the localhost and the userId
 GET http://localhost:3000/users/65a301655a0d75b6bc094421 HTTP/1.1
 
-### Gets all contacts using the Render link
-GET https://cse341-contacts-fz3z.onrender.com/users/65ac4dd6affbbc288ee355bb HTTP/1.1
-
-### Gets one contact using the Render link + the userId
-GET https://cse341-contacts-fz3z.onrender.com/65a301655a0d75b6bc094421 HTTP/1.1
-
 ### Creates User locally
 POST http://localhost:3000/users HTTP/1.1
 content-type: application/json
@@ -23,8 +17,8 @@ content-type: application/json
 "birthday": "2023-05-04"
 }
 
-### Updates user by Id Locally
-PUT http://localhost:3000/users/65ac4dd6affbbc288ee355bb HTTP/1.1
+### Updates Contact by Id Locally
+PUT http://localhost:3000/users/ HTTP/1.1
 content-type: application/json
 
 {
@@ -35,5 +29,5 @@ content-type: application/json
 "birthday": "1991-07-26"
 }
 
-### Deletes user by ID from the database locally
-DELETE  http://localhost:3000/users/65ac212485cfea605ef3fa20 HTTP/1.1
+### Deletes contact by ID from the database locally
+DELETE  http://localhost:3000/users/ HTTP/1.1
